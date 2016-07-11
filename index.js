@@ -3,11 +3,11 @@ var prompt = require('prompt');
 
 prompt.start();
 
-prompt.get(['url'], function (err, result) {
+prompt.get(['url', 'port'], function (err, result) {
   require('dns').lookup(require('os').hostname(), function (err, add, fam) {
-      console.log('You are opening the following URL ' + add + ':3000/' + result.url)
+      console.log('You are opening the following URL ' + add + ':' + result.port + '/' + result.url)
       var newQR;
-      newQR = add + ':3000/' + result.url;
+      newQR = add + ':' + result.port + '/' + result.url;
     	qrcode.generate(newQR, function (qrcode) {
       	console.log(qrcode);
   	});
